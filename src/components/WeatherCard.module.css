@@ -1,0 +1,116 @@
+.card {
+  width: 100%;
+  max-width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 24px;
+  color: #ffffff;
+  /* Margen superior de 24px para separarlo del buscador */
+  margin: 24px auto 20px auto; 
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tempContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.temp {
+  font-size: 3.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.icon, 
+.tempContainer img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.description {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+/* Grid responsivo ajustado */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Centrado completo de cada recuadro de métrica */
+.metricItem {
+  display: flex;
+  flex-direction: column; /* Apila icono arriba y texto abajo para centrarlos perfectamente */
+  align-items: center;    /* Centra horizontalmente */
+  justify-content: center; /* Centra verticalmente */
+  text-align: center;     /* Centra el texto */
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 16px 12px;
+  border-radius: 14px;
+  box-sizing: border-box;
+}
+
+.metricItem span:first-child,
+.metricIcon {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.metricItem img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.metricInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.label {
+  font-size: 0.8rem;
+  opacity: 0.85;
+  margin-bottom: 2px;
+}
+
+/* Evitamos que el valor o texto se corte */
+.value {
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: normal; /* Permite salto de línea si el texto es muy largo */
+  word-break: break-word;
+}
+
+/* Adaptación a pantallas móviles */
+@media (max-width: 480px) {
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

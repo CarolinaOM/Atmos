@@ -5,6 +5,9 @@ import WeatherCard from "./components/WeatherCard";
 import Forecast from "./components/Forecast";
 import Loading from "./components/Loading";
 import ErrorMessage from "./components/ErrorMessage";
+import DynamicBackground from "./components/DynamicBackground";
+import WeatherMap from "./components/WeatherMap";
+
 import { 
   getWeatherByCity, 
   getForecastByCity, 
@@ -24,6 +27,7 @@ function App() {
     try {
       const weather = await getWeatherByCity(searchCity);
       const forecast = await getForecastByCity(searchCity);
+
       setWeatherData(weather);
       setForecastData(forecast.list);
     } catch (err) {
@@ -33,54 +37,65 @@ function App() {
     }
   };
 
-  const fetchWeatherByCoords = async (lat, lon) => {
+  const fetchWeatherByLocation = async (lat, lon) => {
     setLoading(true);
     setError(null);
     try {
       const weather = await getWeatherByCoords(lat, lon);
       const forecast = await getForecastByCoords(lat, lon);
+
       setWeatherData(weather);
       setForecastData(forecast.list);
     } catch (err) {
-      fetchWeather("Madrid"); // Si falla por coordenadas, carga una ciudad por defecto
+      fetchWeather("San Cristóbal de La Laguna");
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    if (navigator.geolocation) {
+    if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          fetchWeatherByCoords(latitude, longitude);
+          fetchWeatherByLocation(latitude, longitude);
         },
         () => {
-          // Si el usuario deniega el permiso de ubicación, carga Madrid
-          fetchWeather("Madrid");
+          fetchWeather("San Cristóbal de La Laguna");
         }
       );
     } else {
-      fetchWeather("Madrid");
+      fetchWeather("San Cristóbal de La Laguna");
     }
   }, []);
 
   return (
-    <div className="app">
-      <Header />
-      <SearchBar onSearch={fetchWeather} />
+    <>
+      <DynamicBackground 
+        weatherCode={weatherData?.weather[0]?.id} 
+        iconCode={weatherData?.weather[0]?.icon} 
+      />
 
-      {loading && <Loading />}
+      <div className="app">
+        <Header />
+        <SearchBar onSearch={fetchWeather} />
 
-      {error && <ErrorMessage message={error} />}
+        {loading && <Loading />}
+        {error && <ErrorMessage message={error} />}
 
-      {!loading && !error && weatherData && (
-        <>
-          <WeatherCard weather={weatherData} />
-          <Forecast forecast={forecastData} />
-        </>
-      )}
-    </div>
+        {!loading && !error && weatherData && (
+          <>
+            <WeatherCard weather={weatherData} />
+            <WeatherMap 
+              lat={weatherData.coord?.lat} 
+              lon={weatherData.coord?.lon} 
+              cityName={weatherData.name} 
+            />
+            <Forecast forecast={forecastData} />
+          </>
+        )}
+      </div>
+    </>
   );
 }
 

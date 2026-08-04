@@ -1,5 +1,6 @@
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
+const GEO_URL = "https://api.openweathermap.org/geo/1.0";
 
 // Obtener el clima actual de una ciudad
 export const getWeatherByCity = async (city) => {
@@ -7,7 +8,7 @@ export const getWeatherByCity = async (city) => {
     const response = await fetch(
       `${BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric&lang=es`
     );
-    
+
     if (!response.ok) {
       throw new Error("Ciudad no encontrada");
     }
@@ -64,5 +65,30 @@ export const getForecastByCoords = async (lat, lon) => {
   } catch (error) {
     console.error(error);
     throw error;
+  }
+};
+
+// Obtener sugerencias de ciudades para autocompletado
+export const getCitySuggestions = async (query) => {
+  if (!query || query.trim().length < 3) return [];
+
+  try {
+    const response = await fetch(
+      `${GEO_URL}/direct?q=${encodeURIComponent(query)}&limit=5&appid=${API_KEY}`
+    );
+
+    if (!response.ok) return [];
+
+    const data = await response.json();
+
+    return data.map((item) => ({
+      name: item.name,
+      country: item.country,
+      state: item.state ? `, ${item.state}` : "",
+      fullLabel: `${item.name}${item.state ? `, ${item.state}` : ""}, ${item.country}`
+    }));
+  } catch (error) {
+    console.error("Error al obtener sugerencias:", error);
+    return [];
   }
 };
