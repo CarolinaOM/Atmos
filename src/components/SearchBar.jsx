@@ -1,18 +1,30 @@
+import React, { useState } from "react";
 import "../styles/SearchBar.css";
 
-function SearchBar() {
+function SearchBar({ onSearch }) {
+  const [cityInput, setCityInput] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Evita que la página se recargue al enviar el formulario
+    if (cityInput.trim() !== "") {
+      onSearch(cityInput.trim());
+      setCityInput(""); // Limpia el campo de texto tras la búsqueda
+    }
+  };
+
   return (
-    <div className="search-container">
+    <form className="search-bar" onSubmit={handleSubmit}>
       <input
-        className="search-input"
         type="text"
         placeholder="Buscar ciudad..."
+        value={cityInput}
+        onChange={(e) => setCityInput(e.target.value)}
+        className="search-input"
       />
-
-      <button className="search-button">
-        Buscar
+      <button type="submit" className="search-button">
+        🔍
       </button>
-    </div>
+    </form>
   );
 }
 
