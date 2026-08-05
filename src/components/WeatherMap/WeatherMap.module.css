@@ -5,103 +5,39 @@
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 28px;
-  padding: 24px;
+  padding: 20px;
   margin-top: 24px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
-  position: relative;
-  z-index: 1;
 }
 
-.mapHeader {
+.header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 8px;
   margin-bottom: 16px;
-  color: #ffffff;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.titleWrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 .headerIcon {
-  color: rgba(255, 255, 255, 0.85);
+  color: #60a5fa;
 }
 
-.mapHeader h3 {
+.title {
   margin: 0;
-  font-size: 1.1rem;
+  color: #ffffff;
+  font-size: 1rem;
   font-weight: 600;
-}
-
-.controls {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.layerBtn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.8);
-  padding: 8px 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.layerBtn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-}
-
-.layerBtn.active {
-  background: rgba(59, 130, 246, 0.7);
-  border-color: rgba(96, 165, 250, 0.8);
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .mapContainer {
-  height: 320px;
   width: 100%;
-  border-radius: 20px;
+  height: 220px;
+  border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.popupContent {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 600;
-  color: #0f172a;
-}
-
-@media (max-width: 600px) {
-  .mapHeader {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .controls {
-    width: 100%;
-  }
-
-  .layerBtn {
-    flex: 1;
-    justify-content: center;
-  }
+.leafletContainer {
+  width: 100%;
+  height: 100%;
 }
