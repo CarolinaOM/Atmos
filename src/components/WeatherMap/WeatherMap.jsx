@@ -53,10 +53,10 @@ function WeatherMap({ lat, lon, cityName }) {
       <div className={styles.mapContainer}>
         <MapContainer center={position} zoom={9} scrollWheelZoom={false} style={{ height: "100%", width: "100%" }}>
           <ChangeView center={position} />
-          {/* Capa base del mapa (OpenStreetMap) */}
+          {/* Capa base en modo oscuro para adaptarse al estilo Glassmorphism */}
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
+            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
           />
           {/* Capa meteorológica superior de OpenWeather */}
           <TileLayer url={weatherTileUrl} opacity={0.7} />

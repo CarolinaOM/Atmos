@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import AnimatedNumber from "./AnimatedNumber";
+import AnimatedNumber from "../AnimatedNumber/AnimatedNumber";
 import styles from "./WeatherCard.module.css";
 
 function WeatherCard({ weather }) {
@@ -56,14 +56,14 @@ function WeatherCard({ weather }) {
         <p className={styles.description}>{description}</p>
       </div>
 
-      {/* Grid de Métricas Expandidas con microanimaciones hover */}
+      {/* Grid de Métricas Expandidas */}
       <div className={styles.metricsGrid}>
         <motion.div 
           className={styles.metricItem}
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <span className={styles.icon}>🌡️</span>
+          <span className={styles.metricIcon}>🌡️</span>
           <div className={styles.metricInfo}>
             <span className={styles.label}>Sensación</span>
             <span className={styles.value}>
@@ -77,7 +77,7 @@ function WeatherCard({ weather }) {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <span className={styles.icon}>💧</span>
+          <span className={styles.metricIcon}>💧</span>
           <div className={styles.metricInfo}>
             <span className={styles.label}>Humedad</span>
             <span className={styles.value}>
@@ -91,7 +91,7 @@ function WeatherCard({ weather }) {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <span className={styles.icon}>💨</span>
+          <span className={styles.metricIcon}>💨</span>
           <div className={styles.metricInfo}>
             <span className={styles.label}>Viento</span>
             <span className={styles.value}>
@@ -105,7 +105,7 @@ function WeatherCard({ weather }) {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <span className={styles.icon}>⏲️</span>
+          <span className={styles.metricIcon}>⏲️</span>
           <div className={styles.metricInfo}>
             <span className={styles.label}>Presión</span>
             <span className={styles.value}>{pressure} hPa</span>
@@ -117,7 +117,7 @@ function WeatherCard({ weather }) {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <span className={styles.icon}>👁️</span>
+          <span className={styles.metricIcon}>👁️</span>
           <div className={styles.metricInfo}>
             <span className={styles.label}>Visibilidad</span>
             <span className={styles.value}>{visibilityKm}</span>
@@ -129,7 +129,7 @@ function WeatherCard({ weather }) {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <span className={styles.icon}>🌅</span>
+          <span className={styles.metricIcon}>🌅</span>
           <div className={styles.metricInfo}>
             <span className={styles.label}>Amanecer</span>
             <span className={styles.value}>{formatTime(sunrise)}</span>
@@ -141,7 +141,7 @@ function WeatherCard({ weather }) {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <span className={styles.icon}>🌇</span>
+          <span className={styles.metricIcon}>🌇</span>
           <div className={styles.metricInfo}>
             <span className={styles.label}>Atardecer</span>
             <span className={styles.value}>{formatTime(sunset)}</span>
@@ -153,7 +153,7 @@ function WeatherCard({ weather }) {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <span className={styles.icon}>☀️</span>
+          <span className={styles.metricIcon}>☀️</span>
           <div className={styles.metricInfo}>
             <span className={styles.label}>Índice UV</span>
             <span className={styles.value}>{weather.uvIndex ?? "Moderado"}</span>

@@ -1,0 +1,49 @@
+.bgContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.8s ease-in-out;
+}
+
+/* Oscurecedor suave sobre el fondo para garantizar la lectura de textos */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg, 
+    rgba(10, 15, 26, 0.35) 0%, 
+    rgba(10, 15, 26, 0.75) 70%, 
+    rgba(10, 15, 26, 0.95) 100%
+  );
+}
+
+/* Temas dinámicos con imágenes de alta calidad (Unsplash direct links) */
+.clearDay {
+  background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop');
+}
+
+.rain {
+  background-image: url('https://images.unsplash.com/photo-1519692933481-e162a57d6721?q=80&w=1600&auto=format&fit=crop');
+}
+
+.night {
+  background-image: url('https://images.unsplash.com/photo-1509773896068-7fd415d91e2e?q=80&w=1600&auto=format&fit=crop');
+}
+
+.thunderstorm {
+  background-image: url('https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?q=80&w=1600&auto=format&fit=crop');
+}
+
+.snow {
+  background-image: url('https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?q=80&w=1600&auto=format&fit=crop');
+}
+
+.clouds {
+  background-image: url('https://images.unsplash.com/photo-1534088568595-a066f410bcda?q=80&w=1600&auto=format&fit=crop');
+}

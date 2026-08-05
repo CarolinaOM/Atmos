@@ -6,7 +6,7 @@ const GEO_URL = "https://api.openweathermap.org/geo/1.0";
 export const getWeatherByCity = async (city) => {
   try {
     const response = await fetch(
-      `${BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric&lang=es`
+      `${BASE_URL}/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric&lang=es`
     );
 
     if (!response.ok) {
@@ -25,7 +25,7 @@ export const getWeatherByCity = async (city) => {
 export const getForecastByCity = async (city) => {
   try {
     const response = await fetch(
-      `${BASE_URL}/forecast?q=${city}&appid=${API_KEY}&units=metric&lang=es`
+      `${BASE_URL}/forecast?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric&lang=es`
     );
 
     if (!response.ok) {
@@ -49,7 +49,7 @@ export const getWeatherByCoords = async (lat, lon) => {
     if (!response.ok) throw new Error("No se pudo obtener el clima de tu ubicación");
     return await response.json();
   } catch (error) {
-    console.error(error);
+    console.error("Error al obtener clima por coordenadas:", error);
     throw error;
   }
 };
@@ -63,7 +63,7 @@ export const getForecastByCoords = async (lat, lon) => {
     if (!response.ok) throw new Error("No se pudo obtener la previsión de tu ubicación");
     return await response.json();
   } catch (error) {
-    console.error(error);
+    console.error("Error al obtener previsión por coordenadas:", error);
     throw error;
   }
 };

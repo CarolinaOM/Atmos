@@ -1,19 +1,20 @@
-import { useState, useEffect } from "react";
-import { getCitySuggestions } from "../services/weatherService";
+import { useState, useEffect, useRef } from "react";
+import { getCitySuggestions } from "../../services/weatherService";
 import styles from "./SearchBar.module.css";
 
 function SearchBar({ onSearch }) {
   const [city, setCity] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
+  const containerRef = useRef(null);
 
   // Buscar sugerencias cuando el usuario escribe (con debounce de 300ms)
   useEffect(() => {
     const timer = setTimeout(async () => {
       if (city.trim().length >= 3) {
         const results = await getCitySuggestions(city);
-        setSuggestions(results);
-        setShowDropdown(results.length > 0);
+        setSuggestions(results || []);
+        setShowDropdown((results || []).length > 0);
       } else {
         setSuggestions([]);
         setShowDropdown(false);
@@ -22,6 +23,17 @@ function SearchBar({ onSearch }) {
 
     return () => clearTimeout(timer);
   }, [city]);
+
+  // Cerrar el desplegable al hacer clic fuera del componente
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +50,7 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <div className={styles.searchContainer}>
+    <div className={styles.searchContainer} ref={containerRef}>
       <form className={styles.searchBar} onSubmit={handleSubmit}>
         <input
           type="text"

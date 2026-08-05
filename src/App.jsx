@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import Header from "./components/Header";
-import SearchBar from "./components/SearchBar";
-import WeatherCard from "./components/WeatherCard";
-import Forecast from "./components/Forecast";
-import Loading from "./components/Loading";
-import ErrorMessage from "./components/ErrorMessage";
-import DynamicBackground from "./components/DynamicBackground";
-import WeatherMap from "./components/WeatherMap";
+import Header from "./components/Header/Header";
+import SearchBar from "./components/SearchBar/SearchBar";
+import WeatherCard from "./components/WeatherCard/WeatherCard";
+import Forecast from "./components/Forecast/Forecast";
+import Loading from "./components/Loading/Loading";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
+import DynamicBackground from "./components/DynamicBackground/DynamicBackground";
+import WeatherMap from "./components/WeatherMap/WeatherMap";
 
 import { 
   getWeatherByCity, 
