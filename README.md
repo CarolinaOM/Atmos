@@ -1,55 +1,48 @@
 # 🌤️ Atmos | Aplicación Web del Clima
 
-Atmos es una aplicación meteorológica moderna desarrollada en React y Vite que consume la API de OpenWeatherMap. Combina datos atmosféricos en tiempo real con una interfaz visual adaptativa que cambia dinámicamente según el clima y la hora del día.
+Atmos es una aplicación meteorológica en tiempo real que construí con React y Vite. La app consume la API de OpenWeatherMap para mostrar información del tiempo de forma visual e intuitiva, cambiando dinámicamente los fondos y efectos según el clima de cada ciudad.
 
 ---
 
-## 🌐 Sitio Web Publicado
+## 🌐 Demo y Video
 
-El proyecto se encuentra en línea y disponible en: **[Tu enlace de Netlify aquí]**
-
----
-
-## 🏗️ Visión General del Proyecto
-
-El objetivo de **Atmos** es brindar información meteorológica precisa de forma visual e intuitiva, permitiendo a los usuarios consultar datos actuales, pronósticos por horas, mapas interactivos y recomendaciones personalizadas según las condiciones del clima.
+- **Sitio Web en Vivo:** [VER APLICACIÓN EN NETLIFY](AQUÍ_PEGA_TU_ENLACE_DE_NETLIFY)
+- **Video Demostrativo:** [VER VIDEO EN YOUTUBE / LOOM](AQUÍ_PEGA_TU_ENLACE_DE_VIDEO)
 
 ---
 
-## ✨ Características Principales
+## 🎯 Sobre el Proyecto
 
-- **Información Meteorológica Completa:** Muestra temperatura actual, sensación térmica, humedad, presión atmosférica, visibilidad, velocidad del viento e índice UV.
-- **Pronóstico Expandido:** Desglose detallado por horas y pronóstico extendido a 5 días.
-- **Mapa Interactivo:** Visualización geográfica de la ciudad con integración de mapas interactivos.
-- **Diseño Dinámico y Adaptativo:** Interfaz estilizada con *Glassmorphism* que ajusta sus fondos y efectos visuales de acuerdo con el código de clima actual.
-- **Geolocalización Automática:** Detección de la ubicación del usuario al permitir accesos, con fallback automático a la ciudad de Tenerife.
-- **Recomendaciones Inteligentes:** Sugerencias automáticas de vestimenta y cuidado diario según el clima actual.
+Creé este proyecto con la idea de ofrecer una experiencia limpia y visualmente atractiva para consultar el clima. En lugar de mostrar solo números, Atmos adapta toda la interfaz (fondos, iconos y tarjetas) al estado meteorológico actual de la ubicación seleccionada.
 
 ---
 
-## 🚀 Tecnologías Utilizadas
+## ✨ Qué puede hacer la aplicación
 
-Esta aplicación de página única (SPA) fue construida con la siguiente pila tecnológica:
-
-- **Frontend:** [React](https://react.dev/)
-- **Empaquetador / Build Tool:** [Vite](https://vitejs.dev/)
-- **Estilos:** CSS Modules y animaciones adaptativas
-- **Iconografía:** [Lucide React](https://lucide.dev/)
-- **Mapas:** [Leaflet](https://leafletjs.com/) y React Leaflet
-- **Fuente de Datos:** [OpenWeatherMap API](https://openweathermap.org/)
+- **Datos meteorológicos en vivo:** Muestra la temperatura actual, sensación térmica, porcentaje de humedad, presión, visibilidad, velocidad del viento e índice UV.
+- **Pronóstico extendido:** Incluye un desglose detallado por horas y el pronóstico para los próximos 5 días.
+- **Mapa interactivo:** Integra mapas con Leaflet para ubicar la ciudad de forma visual.
+- **Geolocalización:** Detecta la ubicación del usuario si concede permisos (con carga por defecto en Tenerife si la rechaza).
+- **Diseño adaptativo:** Tarjetas con efecto *glassmorphism* y respuestas visuales inmediatas en dispositivos móviles y de escritorio.
+- **Recomendaciones del día:** Sugerencias automáticas de ropa según la temperatura y las condiciones del día.
 
 ---
 
-## 🛠️ Cómo Arrancar el Proyecto Localmente
+## 🛠️ Tecnologías Utilizadas
 
-### Requisitos Previos
-
-Asegúrate de tener instalado **[Node.js](https://nodejs.org/)** (versión 18 o superior) y npm en tu sistema.
+- **Frontend:** React + Vite
+- **Estilos:** CSS Modules
+- **Iconos:** Lucide React
+- **Mapas:** React Leaflet / Leaflet
+- **API:** OpenWeatherMap API
 
 ---
 
-### 1. Clonar el Repositorio
+## 💻 Instalación y Uso Local
 
-```bash
-git clone [https://github.com/tu-usuario/atmos.git](https://github.com/tu-usuario/atmos.git)
-cd atmos
+Si quieres probar el proyecto en tu máquina local:
+
+1. **Clona el repositorio:**
+   ```bash
+   git clone [https://github.com/TU_USUARIO/atmos.git](https://github.com/TU_USUARIO/atmos.git)
+   cd atmos
