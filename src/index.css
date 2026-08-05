@@ -15,12 +15,11 @@
 html,
 body {
   min-height: 100vh;
-  background-color: transparent; /* Se cambia a transparente para dejar ver la imagen de fondo */
+  background-color: transparent;
   font-family: var(--font-sans);
   color: var(--text-main);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
@@ -34,32 +33,31 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 40px 20px;
-  max-width: 850px;
+  padding: 30px 16px;
+  max-width: 650px;
   width: 100%;
   margin: 0 auto;
 }
 
-/* Custom Scrollbar */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Scrollbar sutil */
 ::-webkit-scrollbar {
-  width: 8px;
+  height: 6px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(15, 23, 42, 0.4);
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.35);
-}
-
-@media (max-width: 480px) {
-  .app {
-    padding: 20px 14px;
-  }
 }

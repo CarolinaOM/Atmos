@@ -1,12 +1,12 @@
 import React from "react";
 import { Calendar } from "lucide-react";
-import styles from "./Forecast.module.css";
+import styles from "./DailyForecast.module.css";
 
-function Forecast({ forecast }) {
+function DailyForecast({ forecast }) {
   if (!forecast?.length) return null;
 
   const dailyForecasts = forecast.filter((item) =>
-    item.dt_txt.includes("12:00:00")
+    item.dt_txt?.includes("12:00:00")
   );
 
   const getDayName = (dateString) => {
@@ -43,4 +43,4 @@ function Forecast({ forecast }) {
   );
 }
 
-export default Forecast;
+export default DailyForecast;

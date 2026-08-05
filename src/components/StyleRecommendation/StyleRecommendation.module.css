@@ -1,0 +1,44 @@
+.container {
+  width: 100%;
+  background: rgba(18, 24, 38, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 18px 20px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.title {
+  margin: 0 0 14px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 14px;
+  border-radius: 14px;
+}
+
+.icon {
+  color: #60a5fa;
+  flex-shrink: 0;
+}
+
+.text {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+}
