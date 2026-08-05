@@ -1,10 +1,11 @@
 import React from "react";
+import { Loader2 } from "lucide-react";
 import styles from "./Loading.module.css";
 
 function Loading() {
   return (
     <div className={styles.loadingContainer}>
-      <div className={styles.spinner}></div>
+      <Loader2 className={styles.spinner} size={36} />
       <p className={styles.text}>Cargando clima...</p>
     </div>
   );

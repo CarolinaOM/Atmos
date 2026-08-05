@@ -15,6 +15,8 @@ import {
   getForecastByCoords 
 } from "./services/weatherService";
 
+const DEFAULT_CITY = "Madrid";
+
 function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState([]);
@@ -31,7 +33,7 @@ function App() {
       setWeatherData(weather);
       setForecastData(forecast.list);
     } catch (err) {
-      setError("No encontramos esa ciudad. Por favor verifica el nombre e intenta de nuevo.");
+      setError("No pudimos obtener los datos de esa ubicación.");
     } finally {
       setLoading(false);
     }
@@ -47,7 +49,7 @@ function App() {
       setWeatherData(weather);
       setForecastData(forecast.list);
     } catch (err) {
-      fetchWeather("San Cristóbal de La Laguna");
+      fetchWeather(DEFAULT_CITY);
     } finally {
       setLoading(false);
     }
@@ -56,16 +58,11 @@ function App() {
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          fetchWeatherByLocation(latitude, longitude);
-        },
-        () => {
-          fetchWeather("San Cristóbal de La Laguna");
-        }
+        ({ coords }) => fetchWeatherByLocation(coords.latitude, coords.longitude),
+        () => fetchWeather(DEFAULT_CITY)
       );
     } else {
-      fetchWeather("San Cristóbal de La Laguna");
+      fetchWeather(DEFAULT_CITY);
     }
   }, []);
 

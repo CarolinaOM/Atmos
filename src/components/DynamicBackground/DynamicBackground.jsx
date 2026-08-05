@@ -3,16 +3,15 @@ import styles from "./DynamicBackground.module.css";
 
 function DynamicBackground({ weatherCode, iconCode }) {
   const getThemeClass = () => {
-    if (!weatherCode) return styles.clearDay;
-
+    const code = Number(weatherCode);
     const isNight = iconCode?.endsWith("n");
 
     if (isNight) return styles.night;
-    if (weatherCode >= 200 && weatherCode < 300) return styles.thunderstorm;
-    if (weatherCode >= 300 && weatherCode < 600) return styles.rain;
-    if (weatherCode >= 600 && weatherCode < 700) return styles.snow;
-    if (weatherCode === 800) return styles.clearDay;
-    if (weatherCode > 800) return styles.clouds;
+    if (code >= 200 && code < 300) return styles.thunderstorm;
+    if (code >= 300 && code < 600) return styles.rain;
+    if (code >= 600 && code < 700) return styles.snow;
+    if (code === 800) return styles.clearDay;
+    if (code > 800) return styles.clouds;
 
     return styles.clearDay;
   };

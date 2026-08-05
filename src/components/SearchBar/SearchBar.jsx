@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Search, MapPin, Globe } from "lucide-react";
 import { getCitySuggestions } from "../../services/weatherService";
 import styles from "./SearchBar.module.css";
 
@@ -8,13 +9,12 @@ function SearchBar({ onSearch }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const containerRef = useRef(null);
 
-  // Buscar sugerencias cuando el usuario escribe (con debounce de 300ms)
   useEffect(() => {
     const timer = setTimeout(async () => {
       if (city.trim().length >= 3) {
         const results = await getCitySuggestions(city);
         setSuggestions(results || []);
-        setShowDropdown((results || []).length > 0);
+        setShowDropdown(Boolean(results?.length));
       } else {
         setSuggestions([]);
         setShowDropdown(false);
@@ -24,20 +24,20 @@ function SearchBar({ onSearch }) {
     return () => clearTimeout(timer);
   }, [city]);
 
-  // Cerrar el desplegable al hacer clic fuera del componente
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (containerRef.current && !containerRef.current.contains(event.target)) {
         setShowDropdown(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (city.trim() !== "") {
+    if (city.trim()) {
       onSearch(city);
       setShowDropdown(false);
     }
@@ -52,20 +52,22 @@ function SearchBar({ onSearch }) {
   return (
     <div className={styles.searchContainer} ref={containerRef}>
       <form className={styles.searchBar} onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="🌍 Buscar cualquier ciudad..."
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          onFocus={() => suggestions.length > 0 && setShowDropdown(true)}
-          className={styles.searchInput}
-        />
-        <button type="submit" className={styles.searchButton}>
-          🔍
+        <div className={styles.inputWrapper}>
+          <Globe size={18} className={styles.globeIcon} />
+          <input
+            type="text"
+            placeholder="Buscar cualquier ciudad..."
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            onFocus={() => suggestions.length > 0 && setShowDropdown(true)}
+            className={styles.searchInput}
+          />
+        </div>
+        <button type="submit" className={styles.searchButton} aria-label="Buscar">
+          <Search size={18} />
         </button>
       </form>
 
-      {/* Lista desplegable de autocompletado */}
       {showDropdown && (
         <ul className={styles.dropdown}>
           {suggestions.map((item, index) => (
@@ -74,7 +76,8 @@ function SearchBar({ onSearch }) {
               onClick={() => handleSelectCity(item.fullLabel)}
               className={styles.dropdownItem}
             >
-              📍 {item.fullLabel}
+              <MapPin size={16} className={styles.pinIcon} />
+              <span>{item.fullLabel}</span>
             </li>
           ))}
         </ul>

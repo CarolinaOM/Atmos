@@ -1,8 +1,8 @@
 .errorCard {
-  background: rgba(239, 68, 68, 0.15);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(239, 68, 68, 0.25);
   border-radius: 20px;
   padding: 16px 20px;
   margin: 24px auto 0 auto;
@@ -13,16 +13,14 @@
   color: #ffffff;
   max-width: 420px;
   width: 100%;
-  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.15);
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.12);
   box-sizing: border-box;
   text-align: center;
 }
 
 .errorIcon {
-  font-size: 1.4rem;
-  line-height: 1;
-  display: flex;
-  align-items: center;
+  color: #fca5a5;
+  flex-shrink: 0;
 }
 
 .errorCard p {

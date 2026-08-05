@@ -1,22 +1,27 @@
 import React from "react";
+import { Calendar } from "lucide-react";
 import styles from "./Forecast.module.css";
 
 function Forecast({ forecast }) {
-  if (!forecast || forecast.length === 0) return null;
+  if (!forecast?.length) return null;
 
-  // Filtrar para obtener un pronóstico por día (aproximadamente a mediodía)
   const dailyForecasts = forecast.filter((item) =>
     item.dt_txt.includes("12:00:00")
   );
 
   const getDayName = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString("es-ES", { weekday: "short" });
+    const day = date.toLocaleDateString("es-ES", { weekday: "short" });
+    return day.charAt(0).toUpperCase() + day.slice(1).replace(".", "");
   };
 
   return (
     <div className={styles.forecastContainer}>
-      <h3 className={styles.title}>Pronóstico de 5 Días</h3>
+      <div className={styles.titleWrapper}>
+        <Calendar size={18} className={styles.headerIcon} />
+        <h3 className={styles.title}>Pronóstico de 5 días</h3>
+      </div>
+
       <div className={styles.grid}>
         {dailyForecasts.map((item, index) => {
           const dayName = getDayName(item.dt_txt);

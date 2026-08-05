@@ -1,4 +1,5 @@
 import React from "react";
+import { AlertTriangle } from "lucide-react";
 import styles from "./ErrorMessage.module.css";
 
 function ErrorMessage({ message }) {
@@ -6,7 +7,7 @@ function ErrorMessage({ message }) {
 
   return (
     <div className={styles.errorCard}>
-      <span className={styles.errorIcon}>⚠️</span>
+      <AlertTriangle size={20} className={styles.errorIcon} />
       <p>{message}</p>
     </div>
   );
