@@ -6,7 +6,7 @@ Atmos es una aplicación meteorológica en tiempo real que construí con React y
 
 ## 🌐 Demo y Video
 
-- **Sitio Web en Vivo:** [VER APLICACIÓN EN NETLIFY](AQUÍ_PEGA_TU_ENLACE_DE_NETLIFY)
+- **Sitio Web:** [VER APLICACIÓN EN NETLIFY](https://atmos-weather-app-ts.netlify.app/)
 - **Video Demostrativo:** [VER VIDEO EN YOUTUBE / LOOM](AQUÍ_PEGA_TU_ENLACE_DE_VIDEO)
 
 ---
